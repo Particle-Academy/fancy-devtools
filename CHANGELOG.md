@@ -8,7 +8,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
-## [0.1.0] — 2026-08-30
+## [0.0.0] - 2026-08-30
+
+### Added
+
+- Registry bootstrap release. Use `0.1.0` or newer in applications; this version exists only to claim the scoped package name before OIDC trusted publishing can be configured.
+
+## [0.1.0] - 2026-08-30
 
 ### Added
 

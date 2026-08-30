@@ -1,6 +1,6 @@
 {
   "name": "@particle-academy/fancy-devtools",
-  "version": "0.1.0",
+  "version": "0.0.0",
   "description": "Development-only, suite-aware diagnostics and Human+ debugging for Fancy React applications.",
   "repository": { "type": "git", "url": "git+https://github.com/Particle-Academy/fancy-devtools.git" },
   "homepage": "https://github.com/Particle-Academy/fancy-devtools#readme",
