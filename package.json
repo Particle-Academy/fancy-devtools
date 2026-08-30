@@ -1,0 +1,44 @@
+{
+  "name": "@particle-academy/fancy-devtools",
+  "version": "0.1.0",
+  "description": "Development-only, suite-aware diagnostics and Human+ debugging for Fancy React applications.",
+  "repository": { "type": "git", "url": "git+https://github.com/Particle-Academy/fancy-devtools.git" },
+  "homepage": "https://github.com/Particle-Academy/fancy-devtools#readme",
+  "bugs": "https://github.com/Particle-Academy/fancy-devtools/issues",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": { "types": "./dist/index.d.ts", "default": "./dist/index.js" },
+      "require": { "types": "./dist/index.d.cts", "default": "./dist/index.cjs" }
+    },
+    "./styles.css": "./dist/styles.css"
+  },
+  "files": ["dist", "README.md", "LICENSE"],
+  "scripts": {
+    "build": "tsup",
+    "lint": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "prepublishOnly": "npm run test && npm run lint && npm run build"
+  },
+  "peerDependencies": { "@particle-academy/react-fancy": ">=5 <6", "react": "^19.0.0", "react-dom": "^19.0.0" },
+  "devDependencies": {
+    "@particle-academy/react-fancy": "^5.26.0",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.4",
+    "jsdom": "^29.1.1",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "tsup": "^8.5.0",
+    "typescript": "^5.9.3",
+    "vitest": "^4.1.10"
+  },
+  "overrides": { "esbuild": "^0.28.1" },
+  "publishConfig": { "access": "public" },
+  "license": "MIT",
+  "sideEffects": ["**/*.css"],
+  "engines": { "node": ">=22" }
+}
