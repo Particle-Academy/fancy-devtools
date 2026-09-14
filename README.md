@@ -1,5 +1,7 @@
 # Fancy Devtools
 
+[![Fancified](art/fancified.svg)](https://particle.academy)
+
 Suite-aware diagnostics for Fancy React applications. Browser and React DevTools already inspect DOM, CSS, network traffic, component trees and render profiles; Fancy Devtools supplies the context only the suite owns: structured problems, package/environment facts, adapter snapshots, Human+ activity and an identical redacted view for agents.
 
 ```bash
