@@ -5,6 +5,27 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
+      # Third-party dependency allowlist. publish.yml already gates the release
+      # on it, but a gate that only runs at tag time tells a PR that added an
+      # unapproved or abandoned dependency nothing until the release is blocked.
+      # The allowlist is FETCHED, never vendored: one source, no copies to drift.
+      - name: Fetch the third-party allowlist
+        uses: actions/checkout@v4
+        with:
+          repository: Particle-Academy/.github
+          path: .third-party-allowlist
+          persist-credentials: false
+
+      - name: Third-party dependency allowlist
+        run: |
+          node .third-party-allowlist/third-party/check.mjs --repo .
+          # Delete it. A fetched checkout left lying in the workspace is not
+          # inert: vitest globbed the checker's own tests out of it and failed
+          # a package whose code was fine. Removed with node, not rm -rf, so the
+          # step also works where a run: block is PowerShell.
+          node -e "require('node:fs').rmSync('.third-party-allowlist',{recursive:true,force:true})"
+
       - uses: actions/setup-node@v4
         with: { node-version: "22", cache: npm }
       - run: npm ci
