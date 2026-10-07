@@ -36,7 +36,7 @@
     "typescript": "^5.9.3",
     "vitest": "^4.1.10"
   },
-  "overrides": { "esbuild": "^0.28.1" },
+  "overrides": { "esbuild": "^0.28.1", "source-map-js": "^1.2.2" },
   "publishConfig": { "access": "public" },
   "license": "MIT",
   "sideEffects": ["**/*.css"],
