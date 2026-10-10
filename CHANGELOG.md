@@ -14,6 +14,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Security
 
+- **CI workflows now cap the `GITHUB_TOKEN` to `contents: read`.** With no
+  `permissions:` block a workflow inherits the repository default, which can be
+  read-write for the whole token — so a compromised action or a malicious
+  transitive dependency in any step could push to this repo. Nothing in CI here
+  needs more than to read the code. Declared at the workflow level so a job
+  added later cannot arrive with no cap. **Nothing for a consumer to do and no
+  published artifact changes** — recorded because an unwritten cap is one a
+  future edit removes without anyone noticing. (CodeQL
+  `actions/missing-workflow-permissions`.)
+
 - `source-map-js` is pinned forward to `^1.2.2` via `overrides`. Versions up to
   1.2.1 allow an event-loop denial of service through indexed source-map section
   offsets, and it arrives here transitively through the build toolchain.
