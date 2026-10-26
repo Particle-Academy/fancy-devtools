@@ -34,7 +34,7 @@
     "react-dom": "^19.2.8",
     "tsup": "^8.5.0",
     "typescript": "^5.9.3",
-    "vitest": "^4.1.10"
+    "vitest": "^4.1.12"
   },
   "overrides": { "esbuild": "^0.28.1", "source-map-js": "^1.2.2" },
   "publishConfig": { "access": "public" },

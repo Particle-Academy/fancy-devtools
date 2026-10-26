@@ -14,6 +14,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Security
 
+- Update Vitest to 4.1.12 and patch the transitive undici development dependency for security fixes; dev toolchain only, nothing to do.
+
 - **CI workflows now cap the `GITHUB_TOKEN` to `contents: read`.** With no
   `permissions:` block a workflow inherits the repository default, which can be
   read-write for the whole token — so a compromised action or a malicious
