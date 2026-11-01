@@ -1,6 +1,6 @@
 {
   "name": "@particle-academy/fancy-devtools",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Development-only, suite-aware diagnostics and Human+ debugging for Fancy React applications.",
   "repository": { "type": "git", "url": "git+https://github.com/Particle-Academy/fancy-devtools.git" },
   "homepage": "https://github.com/Particle-Academy/fancy-devtools#readme",
@@ -24,9 +24,9 @@
     "test:watch": "vitest",
     "prepublishOnly": "npm run test && npm run lint && npm run build"
   },
-  "peerDependencies": { "@particle-academy/react-fancy": ">=5 <6", "react": "^19.0.0", "react-dom": "^19.0.0" },
+  "peerDependencies": { "@particle-academy/react-fancy": ">=5 <7", "react": "^19.0.0", "react-dom": "^19.0.0" },
   "devDependencies": {
-    "@particle-academy/react-fancy": "^5.26.0",
+    "@particle-academy/react-fancy": "^6.0.0",
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.4",
     "jsdom": "^29.1.1",

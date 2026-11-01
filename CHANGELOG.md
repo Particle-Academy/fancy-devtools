@@ -8,6 +8,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+## [0.1.1] - 2026-11-01
+
+### Changed
+
+- **The `@particle-academy/react-fancy` peer range now also accepts 6.x** (`>=5 <6` to `>=5 <7`). react-fancy 6.0.0 makes `Button` default to `type="button"` instead of submitting an enclosing form (Change Council CC-fancy-0003). Audited for that: its `Button`s (launcher, close, tabs, acknowledge, refresh adapters) are actions and none sits inside a form. No `Button` needed `type="submit"` and no `PromptInput` is used, so the package behaves the same on 5 and 6. On 6 its `Button`s also stop submitting a host form you happen to render it inside. The devDependency moved to `^6.0.0`, so this package's own suite, typecheck and build now run against 6. Widening only adds candidates, so the react-fancy you already have still resolves. **Consumer action:** none on react-fancy 5; on react-fancy 6 it works as-is.
+
 ### Fixed
 
 - **`CHANGELOG.md` is now in the published tarball.** `files` did not whitelist it, so npm never shipped it — and this package puts breaking changes in MINOR releases and tells you in the README to read the entry before taking one. The instruction existed for the author, who has the file, and not for the consumer, who is the only one being instructed. Nothing for you to do; the file simply arrives from this release on.
