@@ -16,7 +16,7 @@
     },
     "./styles.css": "./dist/styles.css"
   },
-  "files": ["dist", "README.md", "LICENSE", "CHANGELOG.md"],
+  "files": ["dist", "README.md", "LICENSE", "CHANGELOG.md", "AGENTS.md"],
   "scripts": {
     "build": "tsup",
     "lint": "tsc --noEmit",

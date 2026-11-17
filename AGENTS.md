@@ -1,19 +1,50 @@
-# AGENTS.md — fancy-devtools
+# Using @particle-academy/fancy-devtools — guide for agents
 
-This repository owns the Fancy suite's development-only React diagnostics console.
+How an agent installs and uses this package in a consumer app. What the package
+is, is in [README.md](./README.md). Notes for working ON this repo's code are in
+[CONTRIBUTING.md](./CONTRIBUTING.md).
 
-## Invariants
+## Install
 
-- Do not recreate Chrome or React DevTools. Capture Fancy-owned meaning: suite contracts, package health, adapter state and Human+ activity.
-- Human and agent views read the same `DevtoolsStore` snapshot. The bridge may filter or redact; it may not invent a parallel model.
-- Every exported snapshot is recursively redacted. Never add an unredacted export path.
-- Adapter failures are isolated. One package's broken diagnostic adapter must not break the app, panel or other adapters.
-- The store returns stable immutable snapshots for `useSyncExternalStore`; publish a new snapshot on every visible mutation.
-- Retention is bounded. Diagnostics tooling must not become the memory leak it is meant to find.
-- The floating launcher and every problem retain stable `data-fancy-devtools` / `data-problem-id` handles.
-- UI composes react-fancy primitives. Missing primitives are findings against the kit, not permission to replace them locally.
-- The package never auto-mounts in production. Production debugging is a host decision with authentication, expiry and explicit lazy loading.
+```bash
+npm install --save-dev @particle-academy/fancy-devtools
+```
 
-## Tests
+- **Peers:** `@particle-academy/react-fancy` (`>=5 <7`), `react ^19`, `react-dom ^19`.
+- **Node:** `>=22`.
+- Import the stylesheet: `import "@particle-academy/fancy-devtools/styles.css";`
 
-`npm test`, `npm run lint`, and `npm run build` are all required. Bug fixes start with a failing test.
+## Find it on the Fancy MCP server
+
+The catalog server is `https://ui.particle.academy/mcp` (streamable HTTP, no API
+key; MCP id `fancy-ui`). This package is not yet listed there; it appears once it
+is in the registry. Look for it later with `search-components`.
+
+## API essentials
+
+- `createDevtoolsStore()` creates the store; `installBrowserDiagnostics(store)`
+  wires browser-level diagnostics into it.
+- `<FancyDevtools store={store} />` mounts the floating console.
+  `FancyDevtoolsPanel` embeds the same panel in an existing development shell.
+  `FancyDevtoolsBoundary` turns React render failures into structured problems
+  while keeping a host-supplied fallback.
+- `store.registerAdapter({ id, label, snapshot })` lets a package contribute its
+  own snapshot. Ready-made: `createQueryAdapter(queryClient)` for TanStack
+  Query-compatible clients, `createTimelineAdapter({ id, label })` for a bounded
+  event recorder (Inertia visits, Human+ tool calls, flow runs).
+- `createDevtoolsBridgeAdapter(store)` gives agents redacted `getSnapshot`,
+  `getProblems`, `getActivity`, adapter refresh, acknowledgement and clear
+  operations. Hand it to the host's MCP registration layer; humans and agents
+  then read the same snapshot.
+- Stable handles: `data-fancy-devtools` on the launcher, `data-problem-id` on
+  each problem.
+
+## Traps
+
+- **Development only.** Mount it behind a development-only conditional import.
+  It never auto-mounts in production; production mounting must be explicit,
+  authenticated and time-limited.
+- **Redaction is a last boundary.** Exports redact credential-shaped keys, but do
+  not record sensitive values on purpose.
+- A broken adapter shows up in that adapter's summary; it does not break the app
+  or the other adapters.
