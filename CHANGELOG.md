@@ -14,8 +14,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
   `lab-certificate` job that every publishing job needs: a tag is published only
   when the fancy-labs lab has certified that exact version and commit. Consumers
   do nothing; this changes how releases are cut, not what the package does.
-- Rebranded the display name to Fancy Dev Kit (README and package description). Package names, the npm scope, URLs and the `fancy-ui` MCP id are unchanged.
+- The suite's display name in the "Fancified" badge (`art/fancified.svg`) is now Fancy Dev Kit, the kit-wide rebrand from Fancy UI. This package keeps its own name, Fancy Devtools. Package names, the npm scope, URLs and the `fancy-ui` MCP id are unchanged.
 - **Docs:** `AGENTS.md` is now the guide to using this package (install, how to find it on the Fancy MCP catalog server once it is listed, API essentials, traps), and it ships in the package. The contributor notes it held moved to `CONTRIBUTING.md`, and `CLAUDE.md` is now a symlink to it. The README points to the MCP server and to `AGENTS.md`. No code changed; nothing to do.
+
+### Fixed
+
+- **Docs:** the rebrand entry above said the README and package description were renamed to Fancy Dev Kit. They were not, and should not be: Fancy Dev Kit is the suite's name, Fancy Devtools is this package's. The only change was the badge, and the entry now says that. Docs only; nothing to do.
 
 ## [0.1.1] - 2026-11-01
 
