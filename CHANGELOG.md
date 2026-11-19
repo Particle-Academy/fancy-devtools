@@ -20,6 +20,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
   do nothing; this changes how releases are cut, not what the package does.
 - The suite's display name in the "Fancified" badge (`art/fancified.svg`) is now Fancy Dev Kit, the kit-wide rebrand from Fancy UI. This package keeps its own name, Fancy Devtools. Package names, the npm scope, URLs and the `fancy-ui` MCP id are unchanged.
 - **Docs:** `AGENTS.md` is now the guide to using this package (install, how to find it on the Fancy MCP catalog server once it is listed, API essentials, traps), and it ships in the package. The contributor notes it held moved to `CONTRIBUTING.md`, and `CLAUDE.md` is now a symlink to it. The README points to the MCP server and to `AGENTS.md`. No code changed; nothing to do.
+- CI: re-pin org third-party allowlist to 2614224
 
 ### Fixed
 
